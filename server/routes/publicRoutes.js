@@ -1,0 +1,13 @@
+import { Router } from 'express';
+import { getCabins } from '../controllers/cabinController.js';
+import { createBooking } from '../controllers/bookingController.js';
+import { getPublicMenu } from '../controllers/menuController.js';
+import { getPublicGallery } from '../controllers/galleryController.js';
+import { submitContact } from '../controllers/contactController.js';
+const router = Router();
+router.get('/cabins', getCabins);
+router.post('/bookings', createBooking);
+router.get('/menu', getPublicMenu);
+router.get('/gallery', getPublicGallery);
+router.post('/contact', submitContact);
+export default router;
