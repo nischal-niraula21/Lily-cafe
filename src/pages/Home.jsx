@@ -32,13 +32,34 @@ export default function Home() {
         <article className="why-us-item"><span className="why-icon"><HeartIcon /></span><div><h3>Warm Hospitality</h3><p>Friendly service that feels attentive, never overdone.</p></div></article>
       </div></div></section>
 
-    <section className="section home-story"><div className="container home-story-grid"><div className="story-visual reveal"><div className="story-visual-main"><img src="/assets/photos/terrace.webp" alt="Dining at Lily" /></div><div className="story-visual-detail"><img src="/assets/photos/latte-glass.webp" alt="Coffee at Lily" /></div></div><div className="home-story-copy reveal"><div className="eyebrow">About Lily</div><h2 className="display h2">A restaurant that feels considered, not complicated.</h2><p className="lead">Lily is built around how people actually spend time together: sharing food, talking over coffee, celebrating something small or taking a private cabin when the evening deserves its own space.</p><p className="lead story-small">The atmosphere is warm, the design is calm, and the experience is meant to feel special without becoming formal.</p><Link className="btn btn-gold btn-arrow" to="/about">Read Our Story</Link></div></div></section>
+    <section className="section home-story"><div className="container home-story-grid"><div className="story-visual reveal">
+      <div className="story-visual-main"><img src="/assets/photos/terrace.webp" alt="Dining at Lily" /></div>
+      <div className="story-visual-detail"><img src="/assets/photos/latte-glass.webp" alt="Coffee at Lily" /></div>
+    </div><div className="home-story-copy reveal"><div className="eyebrow">About Lily</div>
+        <h2 className="display h2">A restaurant that feels considered, not complicated.</h2>
+        <p className="lead">Lily is built around how people actually spend time together: sharing food, talking over coffee, celebrating something small or taking a private cabin when the evening deserves its own space.</p>
+        <p className="lead story-small">The atmosphere is warm, the design is calm, and the experience is meant to feel special without becoming formal.</p>
+        <Link className="btn btn-gold btn-arrow" to="/about">Read Our Story</Link>
+      </div>
+    </div>
+    </section>
 
-    <section className="section section-dark mood-section"><div className="container"><div className="mood-heading reveal"><div><div className="eyebrow">Made for every mood</div><h2 className="display h2">The same place,<br />for very different evenings.</h2></div><p>Come for a quiet coffee, dinner with family, a date or a private celebration. Lily changes with the occasion without losing its character.</p></div><div className="mood-panels reveal"><article className="mood-panel"><img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=90" alt="Private dining" /><div><span>PRIVATE</span><h3>Private Dining</h3><p>Comfort, privacy and room for the conversation.</p></div></article><article className="mood-panel"><img src="/assets/photos/chilli-platter.webp" alt="Food" /><div><span>TABLE</span><h3>Good Food</h3><p>Familiar flavors, generous portions and a menu made for sharing.</p></div></article><article className="mood-panel"><img src="/assets/photos/coffee-tray.webp" alt="Coffee" /><div><span>COFFEE</span><h3>Slow Coffee</h3><p>For catching up, slowing down or simply staying a little longer.</p></div></article></div></div></section>
+    <section className="section section-dark mood-section"><div className="container">
+      <div className="mood-heading reveal"><div><div className="eyebrow">Made for every mood</div>
+        <h2 className="display h2">The same place,<br />for very different evenings.</h2></div>
+        <p>Come for a quiet coffee, dinner with family, a date or a private celebration. Lily changes with the occasion without losing its character.</p></div>
+      <div className="mood-panels reveal"><article className="mood-panel"><img src="/assets/photos/privatedinning.webp" alt="Private dining" />
+        <div>
+          <h3>Private Dining</h3>
+          <p>Comfort, privacy and room for the conversation.</p></div></article>
+        <article className="mood-panel"><img src="/assets/photos/chilli-platter.webp" alt="Food" />
+          <div><h3>Good Food</h3><p>Familiar flavors, generous portions and a menu made for sharing.</p></div></article>
+        <article className="mood-panel"><img src="/assets/photos/coffee-tray.webp" alt="Coffee" /><div><h3>Slow Coffee</h3><p>For catching up, slowing down or simply staying a little longer.</p></div></article></div></div></section>
 
     <section className="cinematic lily-feeling"><img src="/assets/photos/family-celebration.webp" alt="Restaurant ambience" /><div className="container reveal"><div className="eyebrow" style={{ justifyContent: 'center' }}>The Lily Feeling</div><h2 className="display h2">Good food brings people together.</h2><p className="cinematic-copy">And the right space makes people want to stay.</p><Link className="btn btn-gold btn-arrow" to="/cabins">Plan Your Evening</Link></div></section>
 
-    <section className="section gallery-home"><div className="container"><div className="gallery-home-head reveal"><div><div className="eyebrow">Moments at Lily</div><h2 className="display h2">See the atmosphere,<br />not just the tables.</h2></div></div><div className="gallery-editorial reveal">{picks.map((img, i) => <button key={img._id || i} type="button" className={`gallery-editorial-item lightbox-trigger ${i === 0 ? 'tall' : ''} ${i === 3 ? 'wide' : ''}`} onClick={() => setLightbox(i)}><img src={img.url} alt={img.alt} /></button>)}</div><div className="gallery-home-cta reveal"><Link className="btn btn-gold btn-arrow" to="/gallery">Open Gallery</Link></div></div></section>
+    <section className="section gallery-home"><div className="container"><div className="gallery-home-head reveal">
+      <div><div className="eyebrow">Moments at Lily</div><h2 className="display h2">See the atmosphere,<br />not just the tables.</h2></div></div><div className="gallery-editorial reveal">{picks.map((img, i) => <button key={img._id || i} type="button" className={`gallery-editorial-item lightbox-trigger ${i === 0 ? 'tall' : ''} ${i === 3 ? 'wide' : ''}`} onClick={() => setLightbox(i)}><img src={img.url} alt={img.alt} /></button>)}</div><div className="gallery-home-cta reveal"><Link className="btn btn-gold btn-arrow" to="/gallery">Open Gallery</Link></div></div></section>
     <Lightbox images={picks} index={lightbox} onClose={() => setLightbox(-1)} onIndexChange={setLightbox} />
   </main>;
 }

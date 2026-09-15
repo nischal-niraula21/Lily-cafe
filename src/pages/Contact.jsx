@@ -86,7 +86,7 @@ export default function Contact() {
               </div>
               <div className="contact-line">
                 <small>Email</small>
-                <strong>nischalniraula44@gmail.com</strong>
+                <strong>hello@lilycafeandrestaurant.com.np</strong>
               </div>
               <div className="contact-line">
                 <small>Hours</small>

@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="footer-v4-col">
             <h4>Contact</h4>
             <div className="footer-contact-lines"><Link to="/contact">Chandragadhi, Jhapa, Nepal</Link><a href="tel:+9779800000000">
-              +977 981-6046936</a><a href="mailto:hello@lilycafe.com">hello@lilycafe.com</a>
+              +977 981-6046936</a><a href="mailto:hello@lilycafeandrestaurant.com.np">hello@lilycafeandrestaurant.com.np</a>
               <span>9:00 AM - 10:00 PM &middot; Open Monday-Sunday</span></div>
           </div>
         </div>
