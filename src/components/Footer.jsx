@@ -15,10 +15,16 @@ export default function Footer() {
           </div>
           <div className="footer-v4-col">
             <h4>Contact</h4>
-            <div className="footer-contact-lines"><Link to="/contact">Chandragadhi, Jhapa, Nepal</Link><a href="tel:+9779800000000">+977 98XXXXXXXX</a><a href="mailto:hello@lilycafe.com">hello@lilycafe.com</a><span>10:00 AM - 10:00 PM &middot; Open Daily</span></div>
+            <div className="footer-contact-lines"><Link to="/contact">Chandragadhi, Jhapa, Nepal</Link><a href="tel:+9779800000000">
+              +977 981-6046936</a><a href="mailto:hello@lilycafe.com">hello@lilycafe.com</a>
+              <span>9:00 AM - 10:00 PM &middot; Open Monday-Sunday</span></div>
           </div>
         </div>
-        <div className="footer-bottom"><span>&copy; 2026 Lily Cafe &amp; Restaurant. All rights reserved.</span></div>
+        <div className="footer-bottom">
+          <span>&copy; 2026 Lily Cafe &amp; Restaurant. All rights reserved.</span>
+          <span> <a href='nischal-niraula.com.np'>Powered by NISCHAL. </a> </span>
+        </div>
+
       </div>
     </footer>
   );
