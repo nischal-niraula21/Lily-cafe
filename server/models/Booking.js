@@ -7,7 +7,6 @@ const bookingSchema = new mongoose.Schema({
   cabin: { type: mongoose.Schema.Types.ObjectId, ref: 'Cabin', required: true, index: true },
   cabinSnapshot: {
     code: { type: String, required: true },
-    name: { type: String, required: true },
   },
   date: { type: String, required: true, index: true },
   time: { type: String, required: true },

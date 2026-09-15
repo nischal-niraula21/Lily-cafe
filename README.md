@@ -24,6 +24,7 @@ The project provides customers with an elegant restaurant experience while also 
 - Image lightbox with next/previous navigation
 - About and Why Us sections
 - Contact form
+  - Contact form messages are delivered to `nischalniraula44@gmail.com` through Resend
 - Google Maps restaurant location
 - Mobile, tablet, and desktop responsive design
 
@@ -190,7 +191,7 @@ CLOUDINARY_FOLDER=lily-cafe/gallery
 
 RESEND_API_KEY=
 EMAIL_FROM=
-CONTACT_TO_EMAIL=
+CONTACT_TO_EMAIL=nischalniraula44@gmail.com
 BRAND_LOGO_URL=
 Never commit the real .env file to GitHub.
 

@@ -13,7 +13,6 @@ export async function sendBookingApprovedEmail(booking) {
   if (!resend || !process.env.EMAIL_FROM) return { sent: false, skipped: true, reason: 'Resend is not configured.' };
   const logo = process.env.BRAND_LOGO_URL;
   const cabinCode = booking.cabinSnapshot?.code || booking.cabin?.code || '';
-  const cabinName = booking.cabinSnapshot?.name || booking.cabin?.name || '';
   const html = `
   <div style="margin:0;background:#0b0908;padding:32px 16px;font-family:Arial,sans-serif;color:#f4ead9">
     <div style="max-width:640px;margin:auto;background:#15110e;border:1px solid #3d3022;border-radius:18px;overflow:hidden">
@@ -28,7 +27,7 @@ export async function sendBookingApprovedEmail(booking) {
         <p style="line-height:1.7;color:#c9bcae">Hi ${esc(booking.fullName)}, your booking at Lily Cafe &amp; Restaurant has been approved. We look forward to welcoming you.</p>
         <div style="margin:24px 0;background:#0f0d0b;border-radius:14px;padding:18px">
           <table style="width:100%;border-collapse:collapse;color:#f4ead9;font-size:14px">
-            <tr><td style="padding:8px;color:#918174">Cabin</td><td style="padding:8px;text-align:right;font-weight:bold">${esc(cabinCode)} - ${esc(cabinName)}</td></tr>
+            <tr><td style="padding:8px;color:#918174">Cabin</td><td style="padding:8px;text-align:right;font-weight:bold">Cabin ${esc(cabinCode)}</td></tr>
             <tr><td style="padding:8px;color:#918174">Date</td><td style="padding:8px;text-align:right">${esc(formatDateLong(booking.date))}</td></tr>
             <tr><td style="padding:8px;color:#918174">Time</td><td style="padding:8px;text-align:right">${esc(formatTime12Hour(booking.time))}</td></tr>
             <tr><td style="padding:8px;color:#918174">Guests</td><td style="padding:8px;text-align:right">${esc(booking.guests)}</td></tr>
@@ -53,10 +52,48 @@ export async function sendBookingApprovedEmail(booking) {
 
 export async function sendContactNotification(message) {
   const resend = getResend();
-  const to = process.env.CONTACT_TO_EMAIL;
-  if (!resend || !process.env.EMAIL_FROM || !to) return { sent: false, skipped: true };
-  const html = `<div style="font-family:Arial,sans-serif"><h2>New Lily website message</h2><p><strong>Name:</strong> ${esc(message.fullName)}</p><p><strong>Contact:</strong> ${esc(message.contact)}</p><p><strong>Subject:</strong> ${esc(message.subject)}</p><p><strong>Message:</strong><br>${esc(message.message).replace(/\n/g,'<br>')}</p></div>`;
-  const result = await resend.emails.send({ from: process.env.EMAIL_FROM, to, subject: `Lily contact: ${message.subject}`, html });
-  if (result?.error) throw new Error(result.error.message || 'Resend could not send the contact email.');
+  const to = process.env.CONTACT_TO_EMAIL || "nischalniraula44@gmail.com";
+
+  if (!resend || !process.env.EMAIL_FROM) {
+    return {
+      sent: false,
+      skipped: true,
+      reason: "Resend is not configured.",
+    };
+  }
+
+  const logo = process.env.BRAND_LOGO_URL;
+  const html = `
+  <div style="margin:0;background:#0b0908;padding:28px 16px;font-family:Arial,sans-serif;color:#f4ead9">
+    <div style="max-width:640px;margin:auto;background:#15110e;border:1px solid #3d3022;border-radius:18px;overflow:hidden">
+      <div style="padding:24px 28px;text-align:center;border-bottom:1px solid #2d241b">
+        ${logo ? `<img src="${esc(logo)}" alt="Lily Cafe & Restaurant" style="width:68px;height:68px;border-radius:50%;object-fit:cover;margin-bottom:10px">` : ""}
+        <div style="font-family:Georgia,serif;font-size:30px;color:#fff">Lily</div>
+        <div style="font-size:10px;letter-spacing:4px;color:#d9ad5f;margin-top:3px">CAFE &amp; RESTAURANT</div>
+      </div>
+      <div style="padding:28px">
+        <div style="font-size:12px;letter-spacing:2px;color:#d9ad5f;text-transform:uppercase">Website Message</div>
+        <h2 style="font-family:Georgia,serif;font-weight:normal;font-size:30px;margin:10px 0 22px;color:#fff">${esc(message.subject)}</h2>
+        <table style="width:100%;border-collapse:collapse;color:#f4ead9;font-size:14px">
+          <tr><td style="padding:8px;color:#918174;width:110px">Name</td><td style="padding:8px">${esc(message.fullName)}</td></tr>
+          <tr><td style="padding:8px;color:#918174">Email</td><td style="padding:8px">${esc(message.contact)}</td></tr>
+        </table>
+        <div style="margin-top:18px;padding:18px;background:#0f0d0b;border-radius:14px;line-height:1.7;color:#d8ccc1">${esc(message.message).replace(/\n/g, "<br>")}</div>
+      </div>
+    </div>
+  </div>`;
+
+  const result = await resend.emails.send({
+    from: process.env.EMAIL_FROM,
+    to,
+    replyTo: message.contact,
+    subject: `Lily contact: ${message.subject}`,
+    html,
+  });
+
+  if (result?.error) {
+    throw new Error(result.error.message || "Resend could not send the contact email.");
+  }
+
   return { sent: true, result };
 }

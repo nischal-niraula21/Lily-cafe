@@ -40,7 +40,9 @@ api.interceptors.response.use(
 
 export function getErrorMessage(error, fallback = 'Something went wrong.') {
   if (error?.code === 'ERR_NETWORK') {
-    return 'Unable to reach the Lily server. Make sure npm run dev is running and the backend is connected.';
+    return import.meta.env.DEV
+      ? 'Unable to reach the Lily server. Make sure npm run dev is running and the backend is connected.'
+      : 'Unable to reach the Lily server right now. Please try again shortly.';
   }
 
   if (error?.code === 'ECONNABORTED') {

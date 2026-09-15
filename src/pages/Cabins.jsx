@@ -269,7 +269,6 @@ export default function Cabins() {
 
       <BookingModal
         cabin={selected}
-        cabins={cabins}
         form={form}
         state={state}
         minDate={today}

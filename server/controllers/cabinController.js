@@ -16,7 +16,7 @@ export const updateAvailability = asyncHandler(async (req,res) => {
 });
 
 export const updateCabin = asyncHandler(async (req,res) => {
-  const allowed = ['name','capacity','bestFor','features','description','imageUrl'];
+  const allowed = ['capacity','features','description','imageUrl'];
   const updates = Object.fromEntries(Object.entries(req.body).filter(([key]) => allowed.includes(key)));
   const cabin = await Cabin.findByIdAndUpdate(req.params.id, updates, { new: true, runValidators: true });
   if (!cabin) throw httpError(404, 'Cabin not found.');

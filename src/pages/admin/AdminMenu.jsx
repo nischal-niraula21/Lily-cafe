@@ -198,7 +198,7 @@ export default function AdminMenu() {
               <div className="flex flex-col gap-3 border-b border-white/10 p-5 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <div className="text-xs uppercase tracking-[.2em] text-[#d9ad5f]">
-                    Page {category.sortOrder}
+                    Section {category.sortOrder}
                     {!category.isActive && ' · Hidden'}
                   </div>
                   <h2 className="font-serif text-2xl">{category.title}</h2>

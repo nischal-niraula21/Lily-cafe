@@ -5,11 +5,11 @@ import Cabin from '../models/Cabin.js';
 import MenuCategory from '../models/MenuCategory.js';
 
 const cabins = [
-  { code: 'C1', name: 'Window View', capacity: '2-4 guests', bestFor: 'Couples & quiet dining', features: 'Private seating | Warm lighting', description: 'A compact, intimate cabin designed for private conversations and relaxed meals.', imageUrl: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1800&q=90' },
-  { code: 'C2', name: 'Cozy Corner', capacity: '4-6 guests', bestFor: 'Friends & small celebrations', features: 'Sofa seating | Cozy ambience', description: 'A social private cabin with comfortable seating for small celebrations and get-togethers.', imageUrl: 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1800&q=90' },
-  { code: 'C3', name: 'Family Table', capacity: '4-6 guests', bestFor: 'Family dining', features: 'Spacious table | Private room', description: 'A calm family-friendly cabin with a balanced mix of comfort, privacy and space.', imageUrl: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1800&q=90' },
-  { code: 'C4', name: 'Celebration Space', capacity: '6-8 guests', bestFor: 'Birthdays & gatherings', features: 'Large seating | Celebration ready', description: 'A larger setup for birthdays, casual celebrations and group dinners.', imageUrl: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=90' },
-  { code: 'C5', name: 'Group Lounge', capacity: '8-10 guests', bestFor: 'Groups & special occasions', features: 'Premium space | Large group seating', description: "Lily's most spacious private cabin for groups and special occasions.", imageUrl: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1800&q=90' },
+  { code: 'C1', capacity: '2-4 guests', features: 'Private seating | Cozy ambience', description: 'A comfortable private cabin for dining, conversations and small gatherings.', imageUrl: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1800&q=90' },
+  { code: 'C2', capacity: '4-6 guests', features: 'Private seating | Cozy ambience', description: 'A comfortable private cabin for dining, conversations and small gatherings.', imageUrl: 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1800&q=90' },
+  { code: 'C3', capacity: '4-6 guests', features: 'Private seating | Cozy ambience', description: 'A comfortable private cabin for dining, conversations and small gatherings.', imageUrl: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1800&q=90' },
+  { code: 'C4', capacity: '6-8 guests', features: 'Private seating | Cozy ambience', description: 'A comfortable private cabin for dining, conversations and group gatherings.', imageUrl: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=90' },
+  { code: 'C5', capacity: '8-10 guests', features: 'Private seating | Cozy ambience', description: 'A comfortable private cabin for dining, conversations and group gatherings.', imageUrl: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1800&q=90' },
 ];
 
 const rawMenu = [
@@ -26,7 +26,7 @@ const rawMenu = [
 
 try {
   await connectDB();
-  for (const cabin of cabins) await Cabin.findOneAndUpdate({ code: cabin.code }, { $setOnInsert: { ...cabin, availability: 'available' } }, { upsert: true, new: true });
+  for (const cabin of cabins) await Cabin.findOneAndUpdate({ code: cabin.code }, { $set: cabin, $unset: { name: '', bestFor: '' }, $setOnInsert: { availability: 'available' } }, { upsert: true, new: true });
   if (await MenuCategory.countDocuments() === 0) {
     await MenuCategory.insertMany(rawMenu.map(([title, subtitle, items], index) => ({ title, subtitle, sortOrder: index + 1, isActive: true, items: items.map(([name, price], i) => ({ name, price, sortOrder: i + 1, isAvailable: true })) })));
     console.log('Default menu inserted.');

@@ -165,10 +165,7 @@ export default function AdminBookings() {
                     </td>
 
                     <td className="px-4 py-4">
-                      {booking.cabinSnapshot?.code || booking.cabin?.code}
-                      <div className="text-xs text-stone-500">
-                        {booking.cabinSnapshot?.name || booking.cabin?.name}
-                      </div>
+                      Cabin {booking.cabinSnapshot?.code || booking.cabin?.code}
                     </td>
 
                     <td className="px-4 py-4">

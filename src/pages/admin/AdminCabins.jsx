@@ -88,7 +88,7 @@ export default function AdminCabins() {
                     <div className="text-xs uppercase tracking-[.2em] text-[#d9ad5f]">
                       Cabin {cabin.code}
                     </div>
-                    <h2 className="mt-1 font-serif text-2xl">{cabin.name}</h2>
+                    <h2 className="mt-1 font-serif text-2xl">Cabin {cabin.code}</h2>
                   </div>
 
                   <span
@@ -103,7 +103,8 @@ export default function AdminCabins() {
                 </div>
 
                 <p className="mt-3 text-sm text-stone-500">
-                  {cabin.capacity} · {cabin.bestFor}
+                  {cabin.capacity}
+                  {cabin.features ? ` · ${cabin.features.replaceAll('|', ' · ')}` : ''}
                 </p>
 
                 <button

@@ -1173,3 +1173,19 @@ body{background:var(--v4-bg);color:var(--v4-text)}
     width:min(304px,calc(100vw - 64px));
   }
 }
+
+
+/* Dynamic menu pagination: up to 11 items per physical book page. */
+.book-cover-v3{aspect-ratio:auto;height:850px;transition:height .32s ease}
+.book-cover-v3.menu-items-9{height:870px}
+.book-cover-v3.menu-items-10{height:890px}
+.book-cover-v3.menu-items-11{height:910px}
+.book-cover-v3 .menu-row span:first-child{line-height:1.35}
+.booking-cabin-readonly{cursor:default;color:#f1e6db;background:rgba(255,255,255,.025)}
+
+@media(max-width:700px){
+  .book-cover-v3{height:680px}
+  .book-cover-v3.menu-items-9{height:700px}
+  .book-cover-v3.menu-items-10{height:720px}
+  .book-cover-v3.menu-items-11{height:740px}
+}

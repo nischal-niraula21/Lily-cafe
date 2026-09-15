@@ -78,7 +78,7 @@ export const createBooking = asyncHandler(async (req, res) => {
     email: data.email,
     phone: data.phone,
     cabin: cabin._id,
-    cabinSnapshot: { code: cabin.code, name: cabin.name },
+    cabinSnapshot: { code: cabin.code },
     date: data.date,
     time: data.time,
     guests: data.guests,

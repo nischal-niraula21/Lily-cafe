@@ -72,8 +72,7 @@ export default function AdminDashboard() {
                 </div>
 
                 <div className="text-sm text-stone-300">
-                  {booking.cabinSnapshot?.code || booking.cabin?.code} -{' '}
-                  {booking.cabinSnapshot?.name || booking.cabin?.name}
+                  Cabin {booking.cabinSnapshot?.code || booking.cabin?.code}
                 </div>
 
                 <div className="text-sm text-stone-400">
