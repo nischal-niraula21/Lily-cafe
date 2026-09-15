@@ -5136,3 +5136,76 @@ body {
     height: 590px;
   }
 }
+
+/* ==============================
+   Social media links
+   Used in Hero + Footer
+   ============================== */
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(224, 158, 36, 0.28);
+  border-radius: 50%;
+
+  background: rgba(215, 170, 87, 0.025);
+  color: #dacbbc;
+
+  font-size: 16px;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.social-link:hover {
+  color: #15100d;
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.social-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.footer-socials {
+  margin-top: 22px;
+}
+
+.social-link {
+  width: 38px;
+  height: 38px;
+}
+
+.hero-social-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.hero-social-eyebrow {
+  margin: 15px;
+}
+
+
+
+@media (max-width: 680px) {
+  .hero-social-row {
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+}

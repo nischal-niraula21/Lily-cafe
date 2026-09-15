@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import { api } from '../api/client';
 import { fallbackGallery } from '../data/fallback';
 import Lightbox from '../components/Lightbox';
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTiktok,
+} from "react-icons/fa6";
 
 const FoodIcon = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v7M4.5 3v4.5A2.5 2.5 0 0 0 7 10m0 0v11M9.5 3v4.5A2.5 2.5 0 0 1 7 10M16 3v18M16 3c2.5 1.5 3.5 4.5 3 7.5-.4 2.1-1.5 3.5-3 4.2" /></svg>;
 const CabinIcon = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V8l8-5 8 5v13M8 21v-8h8v8M9 9h6" /></svg>;
@@ -21,7 +26,43 @@ export default function Home() {
         <h1 className="display h1">A Place Made for<br /><span className="gold">Good Food</span> &amp;<br />Beautiful Moments</h1>
         <p className="hero-copy">Warm food, thoughtful service and private spaces for the moments you actually want to remember.</p>
         <div className="hero-actions"><Link className="btn btn-gold btn-arrow" to="/menu">Explore Our Menu</Link><Link className="btn btn-ghost btn-arrow" to="/cabins">Book Cabin</Link></div></div></section>
+    <div className="hero-social-row">
+      <div className="eyebrow hero-social-eyebrow">
+        Follow Lily
+      </div>
 
+      <div className="social-links">
+        <a
+          className="social-link"
+          href="https://www.facebook.com/share/19VrffCrUX/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Lily Cafe on Facebook"
+        >
+          <FaFacebookF />
+        </a>
+
+        <a
+          className="social-link"
+          href="https://www.instagram.com/lilycafeandrestaurant?stkn=MXRpNXNnZWZ3eWY2dA=="
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Lily Cafe on Instagram"
+        >
+          <FaInstagram />
+        </a>
+
+        <a
+          className="social-link"
+          href="https://www.tiktok.com/@lilycafeandrestaurant?lang=en-GB&is_from_webapp=1&sender_device=mobile&sender_web_id=7685797483645830657"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Lily Cafe on TikTok"
+        >
+          <FaTiktok />
+        </a>
+      </div>
+    </div>
     <section className="why-us-section"><div className="container why-us-grid"><div className="why-us-intro reveal">
       <div className="eyebrow">Why us</div><h2 className="display h3">The small details make the whole evening feel better.</h2>
       <p>Nothing loud or over designed. Just good food, privacy when you want it and a warm room that lets you settle in.</p></div><div className="why-us-list reveal">
