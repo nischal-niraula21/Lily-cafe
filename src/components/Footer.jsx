@@ -21,8 +21,9 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>&copy; 2026 Lily Cafe &amp; Restaurant. All rights reserved.</span>
-          <span> <a href='nischal-niraula.com.np'>Powered by NISCHAL. </a> </span>
+          <span>&copy; 2026 Lily Cafe &amp; Restaurant. All rights reserved.</span> <br>
+            <span> <a href="nischal-niraula.com.np">Powered by NISCHAL. </a> </span>
+          </br>
         </div>
 
       </div>
