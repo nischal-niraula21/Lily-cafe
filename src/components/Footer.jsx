@@ -24,6 +24,7 @@ export default function Footer() {
               <Link to="/cabins">Cabins</Link>
               <Link to="/gallery">Gallery</Link>
               <Link to="/about">About</Link>
+              <Link to="/contact">Contact</Link>
             </div>
           </div>
 
