@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import Brand from './Brand';
 
 const navItems = [
   ['/', 'Home'], ['/menu', 'Menu'], ['/cabins', 'Cabins'], ['/gallery', 'Gallery'], ['/about', 'About'], ['/contact', 'Contact']
@@ -22,10 +23,7 @@ export default function Header({ forceDark = false }) {
   return (
     <header className={`site-header ${forceDark ? 'force-dark' : ''} ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-shell">
-        <Link className="brand" to="/">
-          <span className="brand-mark"><img src="/assets/lily-logo.jpg" alt="Lily" /></span>
-          <span className="brand-copy"><span className="brand-name">Lily</span><span className="brand-sub">CAFE &amp; RESTAURANT</span></span>
-        </Link>
+        <Brand />
         <nav className={`nav-links ${open ? 'open' : ''}`}>
           {navItems.map(([to,label]) => (
             <NavLink key={to} to={to} end={to === '/'} className={({isActive}) => isActive ? 'active' : ''}>{label}</NavLink>

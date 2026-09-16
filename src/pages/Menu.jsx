@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { api } from "../api/client";
 import { fallbackMenu } from "../data/fallback";
+import { SITE } from "../config/site";
 
 const ITEMS_PER_PAGE = 11;
 
@@ -91,7 +92,7 @@ function MenuPage({
         <div className="menu-cover-brand">
           <span className="menu-cover-logo">
             <img
-              src="/assets/lily-logo.jpg"
+              src={SITE.logo}
               alt="Lily"
             />
           </span>
@@ -132,7 +133,7 @@ function MenuPage({
       <div className="book-title-row">
         <span className="book-mini-logo">
           <img
-            src="/assets/lily-logo.jpg"
+            src={SITE.logo}
             alt=""
           />
         </span>

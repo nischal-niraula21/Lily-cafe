@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { SITE } from '../config/site';
 
 const links = [
   { to: '/admin', label: 'Dashboard', icon: LayoutDashboard, end: true },
@@ -31,7 +32,7 @@ export default function AdminLayout() {
       <aside className="border-b border-white/10 bg-[#12100e] lg:fixed lg:inset-y-0 lg:w-72 lg:border-b-0 lg:border-r">
         <div className="flex items-center gap-3 px-6 py-6">
           <img
-            src="/assets/lily-logo.jpg"
+            src={SITE.logo}
             className="h-12 w-12 rounded-full object-cover"
             alt="Lily"
           />

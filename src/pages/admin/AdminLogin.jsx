@@ -3,6 +3,7 @@ import { Eye, EyeOff } from 'lucide-react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { getErrorMessage } from '../../api/client';
 import { useAuth } from '../../context/AuthContext';
+import { SITE } from '../../config/site';
 
 export default function AdminLogin() {
   const { login, isAuthenticated } = useAuth();
@@ -42,7 +43,7 @@ export default function AdminLogin() {
         <div className="mb-8 flex items-center gap-4">
           <img
             className="h-14 w-14 rounded-full object-cover"
-            src="/assets/lily-logo.jpg"
+            src={SITE.logo}
             alt="Lily"
           />
           <div>
